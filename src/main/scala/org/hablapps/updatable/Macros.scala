@@ -242,7 +242,7 @@ object Macros {
       newObjectTemplate)
 
     lazy val builderAlias =
-      q"@org.hablapps.updatable.IAmEntityCompanion def $className = macro org.hablapps.updatable.Macros.entityToBuilderImpl[$className]"
+      q"@org.hablapps.updatable.IAmEntityCompanion def ${className.toTermName} = macro org.hablapps.updatable.Macros.entityToBuilderImpl[$className]"
 
     val bldImplName =  newTermName(c.fresh("builder"))
 
@@ -318,7 +318,7 @@ object Macros {
       case EXTENDS_JOIN => tq"Join"
       case EXTENDS_ALLOW => tq"Allow"
     })
-    val newBody = q"type This = $className" :: body
+    val newBody = body :+ q"type This = $className"
     val newTemplate = Template(newParents, self, newBody)
 
     val q"$dummy val ${_} = ???" = 

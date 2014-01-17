@@ -4,7 +4,7 @@ projectVersion in ThisBuild := ("0.7.1", SNAPSHOT)
 
 organization in ThisBuild := "org.hablapps"
 
-scalaVersion in ThisBuild := "2.10.2"
+scalaVersion in ThisBuild := "2.10.3"
 
 scalacOptions ++= Seq("-feature", "-deprecation", "-language:reflectiveCalls", "-language:experimental.macros")
 
@@ -14,7 +14,7 @@ scalaSource in Test <<= baseDirectory(_ / "src/test")
 
 resolvers += Resolver.sonatypeRepo("snapshots")
 
-addCompilerPlugin("org.scala-lang.plugins" % "macro-paradise" % "2.0.0-SNAPSHOT" cross CrossVersion.full)
+addCompilerPlugin("org.scalamacros" % "paradise" % "2.0.0-M2" cross CrossVersion.full)
 
 libraryDependencies in ThisBuild <++= scalaVersion { (sv: String) => Seq(
 	"org.scala-lang" % "scala-compiler" % sv,
