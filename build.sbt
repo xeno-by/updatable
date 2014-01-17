@@ -16,6 +16,8 @@ resolvers += Resolver.sonatypeRepo("snapshots")
 
 addCompilerPlugin("org.scalamacros" % "paradise" % "2.0.0-M2" cross CrossVersion.full)
 
+parallelExecution in Test := false
+
 libraryDependencies in ThisBuild <++= scalaVersion { (sv: String) => Seq(
 	"org.scala-lang" % "scala-compiler" % sv,
 	"org.scala-lang" % "scala-reflect" % sv,
